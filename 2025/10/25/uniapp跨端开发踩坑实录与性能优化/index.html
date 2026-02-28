@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>UniApp跨端开发踩坑实录与性能优化 | Libra</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/myblog/favicon.ico">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.8002f6fa.css" as="style"><link rel="preload" href="/myblog/assets/js/app.0a876373.js" as="script"><link rel="preload" href="/myblog/assets/js/5.853d4883.js" as="script"><link rel="preload" href="/myblog/assets/js/47.1d3b9909.js" as="script"><link rel="preload" href="/myblog/assets/js/1.cdc4b264.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.23267578.js"><link rel="prefetch" href="/myblog/assets/js/11.be992460.js"><link rel="prefetch" href="/myblog/assets/js/12.4570de1c.js"><link rel="prefetch" href="/myblog/assets/js/13.bd8d8dd2.js"><link rel="prefetch" href="/myblog/assets/js/14.1f804322.js"><link rel="prefetch" href="/myblog/assets/js/15.af9e6b2c.js"><link rel="prefetch" href="/myblog/assets/js/16.e4a987dc.js"><link rel="prefetch" href="/myblog/assets/js/17.f6effde3.js"><link rel="prefetch" href="/myblog/assets/js/18.4c9cfb8e.js"><link rel="prefetch" href="/myblog/assets/js/19.37c484fe.js"><link rel="prefetch" href="/myblog/assets/js/20.a99653e3.js"><link rel="prefetch" href="/myblog/assets/js/21.1af7cc5d.js"><link rel="prefetch" href="/myblog/assets/js/22.1229b890.js"><link rel="prefetch" href="/myblog/assets/js/23.82a27837.js"><link rel="prefetch" href="/myblog/assets/js/24.cf005177.js"><link rel="prefetch" href="/myblog/assets/js/25.3b815601.js"><link rel="prefetch" href="/myblog/assets/js/26.330372a6.js"><link rel="prefetch" href="/myblog/assets/js/27.165394fc.js"><link rel="prefetch" href="/myblog/assets/js/28.fb4ee107.js"><link rel="prefetch" href="/myblog/assets/js/29.94bb2658.js"><link rel="prefetch" href="/myblog/assets/js/30.94fd0e41.js"><link rel="prefetch" href="/myblog/assets/js/31.8a3ae5b7.js"><link rel="prefetch" href="/myblog/assets/js/32.3c348ce2.js"><link rel="prefetch" href="/myblog/assets/js/33.7cab764e.js"><link rel="prefetch" href="/myblog/assets/js/34.3eb790d7.js"><link rel="prefetch" href="/myblog/assets/js/35.8d1acd41.js"><link rel="prefetch" href="/myblog/assets/js/36.2f174442.js"><link rel="prefetch" href="/myblog/assets/js/37.73b03b13.js"><link rel="prefetch" href="/myblog/assets/js/38.2f8a2d2e.js"><link rel="prefetch" href="/myblog/assets/js/39.a7a47a26.js"><link rel="prefetch" href="/myblog/assets/js/4.544b33f4.js"><link rel="prefetch" href="/myblog/assets/js/40.2413154b.js"><link rel="prefetch" href="/myblog/assets/js/41.49cf6e71.js"><link rel="prefetch" href="/myblog/assets/js/42.50c0dac3.js"><link rel="prefetch" href="/myblog/assets/js/43.23142174.js"><link rel="prefetch" href="/myblog/assets/js/44.0f5a8424.js"><link rel="prefetch" href="/myblog/assets/js/45.47e21b95.js"><link rel="prefetch" href="/myblog/assets/js/46.6ba44e8d.js"><link rel="prefetch" href="/myblog/assets/js/48.7403b689.js"><link rel="prefetch" href="/myblog/assets/js/6.e5482409.js"><link rel="prefetch" href="/myblog/assets/js/7.e853b8f4.js"><link rel="prefetch" href="/myblog/assets/js/8.16fabdc6.js"><link rel="prefetch" href="/myblog/assets/js/9.b305dea1.js"><link rel="prefetch" href="/myblog/assets/js/vuejs-paginate.22753671.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.8002f6fa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="article"><nav class="topbar"><span class="logo"><span class="logo-text">L</span></span> <ul class="menu"><li class="menu-item"><a href="/myblog/" class="link router-link-active">主页</a></li> <li class="menu-item"><a href="/myblog/blog" class="link">博客</a></li> <li class="menu-item"><a href="/myblog/tag" class="link">标签</a></li> <li class="menu-item"><a href="/myblog/category" class="link">分类</a></li> <li class="menu-item"><a href="/myblog/timeline" class="link">时间线</a></li> <li class="menu-item"><a href="/myblog/contact" class="link">联系我</a></li></ul> <div class="search"><i class="iconfont iconsearch"></i> <div class="search-box" data-v-085dd956><input aria-label="Search" placeholder="请输入你想要搜索的内容..." autocomplete="off" spellcheck="false" value="" data-v-085dd956> <!----></div></div> <span class="mobile-nav"><i class="iconfont iconnav"></i></span> <nav class="mobile-nav-item" style="display:none;"><div class="header-button"><i class="iconfont iconback"></i></div> <div class="header-info"><div class="avatar"><img src="https://libra321.oss-cn-huhehaote.aliyuncs.com/avatar.jpg" alt="" class="avatar-img"></div> <span class="name">Lijinnuo</span> <i class="mail">794555309@qq.com</i> <div class="statistics"><span class="articles">
+            33
+            <i class="white"> 文章</i></span> <span class="verticle-line white">|</span> <span class="link">
+            17
+            <i class="white"> 分类</i></span></div></div> <div class="line"></div> <ul class="nav-menu"><li class="nav-menu-item"><a href="/myblog/" class="router-link-active"><i class="iconfont iconhome"></i> <i class="white">主页</i></a></li> <li class="nav-menu-item"><a href="/myblog/blog"><i class="iconfont iconblog"></i> <i class="white">博客</i></a></li> <li class="nav-menu-item"><a href="/myblog/tag"><i class="iconfont iconlabel"></i> <i class="white">标签</i></a></li> <li class="nav-menu-item"><a href="/myblog/category"><i class="iconfont iconfenlei-"></i> <i class="white">分类</i></a></li> <li class="nav-menu-item"><a href="/myblog/timeline"><i class="iconfont icontimeline"></i> <i class="white">时间线</i></a></li> <li class="nav-menu-item"><a href="/myblog/contact"><i class="iconfont iconother"></i> <i class="white">联系我</i></a></li></ul></nav></nav> <div id="particles-js" color="#fff" particleOpacity="0.7" linesColor="#fff" particlesNumber="60" shapeType="circle" particleSize="4" linesWidth="1" lineLinked="true" lineOpacity="0.4" linesDistance="150" moveSpeed="6" hoverEffect="true" hoverMode="grab" clickEffect="true" clickMode="push" class="bg"></div> <div class="article-content"><div class="left"><span class="title animated rollIn">UniApp跨端开发踩坑实录与性能优化</span> <ul class="label animated zoomInUp"><li class="date"><i class="iconfont iconshizhong"></i>
+          2025-10-25
+        </li> <li class="update"><i class="iconfont iconUpdate"></i>
+          2025-10-25
+        </li> <li class="labels"><i class="iconfont iconlabel"></i>
+          uniapp
+        </li></ul> <div class="image"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800" alt width="100%"></div> <div class="detail"><div><div class="content__default"><h1 id="uniapp跨端开发踩坑实录与性能优化"><a href="#uniapp跨端开发踩坑实录与性能优化" class="header-anchor">#</a> UniApp跨端开发踩坑实录与性能优化</h1> <p>UniApp 号称「一套代码，多端运行」，但现实远没有那么美好。在带领团队用 UniApp + Vue3 开发一个跨 H5/微信小程序/App 三端的电商项目后，我整理了这份踩坑实录。</p> <h2 id="一、条件编译-不得不写的「脏代码」"><a href="#一、条件编译-不得不写的「脏代码」" class="header-anchor">#</a> 一、条件编译：不得不写的「脏代码」</h2> <p>UniApp 最核心的跨端方案就是条件编译，但用多了代码会变得极其难维护。</p> <h3 id="坑1-条件编译在-template-中的限制"><a href="#坑1-条件编译在-template-中的限制" class="header-anchor">#</a> 坑1：条件编译在 template 中的限制</h3> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- ❌ 条件编译不能用在属性值中间 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item-
+    &lt;!-- #ifdef MP-WEIXIN --&gt;
+    weixin
+    &lt;!-- #endif --&gt;
+  <span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- ✅ 用计算属性处理 --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>itemClass<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> itemClass <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> cls <span class="token operator">=</span> <span class="token string">'item'</span>
+  <span class="token comment">// #ifdef MP-WEIXIN</span>
+  cls <span class="token operator">+=</span> <span class="token string">' item-weixin'</span>
+  <span class="token comment">// #endif</span>
+  <span class="token comment">// #ifdef H5</span>
+  cls <span class="token operator">+=</span> <span class="token string">' item-h5'</span>
+  <span class="token comment">// #endif</span>
+  <span class="token keyword">return</span> cls
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="坑2-平台差异导致样式不一致"><a href="#坑2-平台差异导致样式不一致" class="header-anchor">#</a> 坑2：平台差异导致样式不一致</h3> <div class="language-css extra-class"><pre class="language-css"><code><span class="token comment">/* 小程序中 fixed 定位在某些场景下表现异常 */</span>
+<span class="token selector">.fixed-bottom</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
+  <span class="token property">bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token comment">/* #ifdef MP-WEIXIN */</span>
+  <span class="token comment">/* 微信小程序需要额外处理底部安全区 */</span>
+  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> <span class="token function">env</span><span class="token punctuation">(</span>safe-area-inset-bottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/* #endif */</span>
+  <span class="token comment">/* #ifdef APP-PLUS */</span>
+  <span class="token comment">/* App端使用 uni.getSystemInfo 获取安全区 */</span>
+  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--safe-area-bottom<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/* #endif */</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="更好的做法-封装跨端适配层"><a href="#更好的做法-封装跨端适配层" class="header-anchor">#</a> 更好的做法：封装跨端适配层</h3> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// utils/platform.ts</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getSafeAreaBottom</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">number</span> <span class="token punctuation">{</span>
+  <span class="token comment">// #ifdef MP-WEIXIN</span>
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> safeArea<span class="token punctuation">,</span> screenHeight <span class="token punctuation">}</span> <span class="token operator">=</span> uni<span class="token punctuation">.</span><span class="token function">getSystemInfoSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> safeArea <span class="token operator">?</span> screenHeight <span class="token operator">-</span> safeArea<span class="token punctuation">.</span>bottom <span class="token operator">:</span> <span class="token number">0</span>
+  <span class="token comment">// #endif</span>
+
+  <span class="token comment">// #ifdef H5</span>
+  <span class="token keyword">return</span> <span class="token number">0</span> <span class="token comment">// H5通过CSS env() 处理</span>
+  <span class="token comment">// #endif</span>
+
+  <span class="token comment">// #ifdef APP-PLUS</span>
+  <span class="token keyword">const</span> sysInfo <span class="token operator">=</span> uni<span class="token punctuation">.</span><span class="token function">getSystemInfoSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> sysInfo<span class="token punctuation">.</span>safeAreaInsets<span class="token operator">?.</span>bottom <span class="token operator">??</span> <span class="token number">0</span>
+  <span class="token comment">// #endif</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// utils/storage.ts</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">setStorage</span><span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> value<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name"><span class="token builtin">Promise</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> reject<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// #ifdef H5</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+      localStorage<span class="token punctuation">.</span><span class="token function">setItem</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">reject</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// #endif</span>
+    
+    <span class="token comment">// #ifndef H5</span>
+    uni<span class="token punctuation">.</span><span class="token function">setStorage</span><span class="token punctuation">(</span><span class="token punctuation">{</span> key<span class="token punctuation">,</span> data<span class="token operator">:</span> value<span class="token punctuation">,</span> success<span class="token operator">:</span> resolve<span class="token punctuation">,</span> fail<span class="token operator">:</span> reject <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token comment">// #endif</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="二、最容易踩的运行时陷阱"><a href="#二、最容易踩的运行时陷阱" class="header-anchor">#</a> 二、最容易踩的运行时陷阱</h2> <h3 id="坑3-页面生命周期与组件生命周期混用"><a href="#坑3-页面生命周期与组件生命周期混用" class="header-anchor">#</a> 坑3：页面生命周期与组件生命周期混用</h3> <p>这是 UniApp 最让人困惑的点之一。UniApp 的<strong>页面</strong>有 <code>onLoad</code>、<code>onShow</code>、<code>onHide</code> 等生命周期，而 Vue3 <strong>组件</strong>有 <code>onMounted</code>、<code>onUnmounted</code> 等。</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// ❌ 在组件中使用页面生命周期，不生效！</span>
+<span class="token comment">// components/UserCard.vue</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> onShow <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@dcloudio/uni-app'</span>
+
+<span class="token function">onShow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 这个钩子在组件中永远不会触发！</span>
+  <span class="token comment">// onShow 只在 pages/ 下的页面中生效</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'show'</span><span class="token punctuation">)</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>解决方案</strong>：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// ✅ 在页面中使用 onShow，通过 props 或 provide/inject 通知子组件</span>
+<span class="token comment">// pages/home.vue</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> onShow <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@dcloudio/uni-app'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> provide <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> pageVisible <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token function">provide</span><span class="token punctuation">(</span><span class="token string">'pageVisible'</span><span class="token punctuation">,</span> pageVisible<span class="token punctuation">)</span>
+
+<span class="token function">onShow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  pageVisible<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">onHide</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  pageVisible<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="坑4-navigate-跳转参数丢失"><a href="#坑4-navigate-跳转参数丢失" class="header-anchor">#</a> 坑4：navigate 跳转参数丢失</h3> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// ❌ 传递复杂对象时参数被截断</span>
+uni<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/pages/detail?data=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>complexObj<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
+  <span class="token comment">// URL 长度有限制，小程序端约 1024 个字符</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p><strong>解决方案</strong>：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// ✅ 方案1：使用事件通道（推荐）</span>
+<span class="token comment">// 发送方</span>
+uni<span class="token punctuation">.</span><span class="token function">navigateTo</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  url<span class="token operator">:</span> <span class="token string">'/pages/detail'</span><span class="token punctuation">,</span>
+  <span class="token function">success</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    res<span class="token punctuation">.</span>eventChannel<span class="token punctuation">.</span><span class="token function">emit</span><span class="token punctuation">(</span><span class="token string">'sendData'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> 
+      orderInfo<span class="token operator">:</span> complexObj<span class="token punctuation">,</span>
+      userInfo<span class="token operator">:</span> currentUser 
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 接收方（pages/detail.vue）</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> onLoad <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@dcloudio/uni-app'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> getCurrentInstance <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token function">onLoad</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> instance <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> eventChannel <span class="token operator">=</span> instance<span class="token operator">?.</span>proxy<span class="token operator">?.</span>getOpenerEventChannel<span class="token operator">?.</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  eventChannel<span class="token operator">?.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'sendData'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>data<span class="token operator">:</span> <span class="token builtin">any</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'received:'</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// ✅ 方案2：使用 Pinia 全局状态</span>
+<span class="token comment">// 跳转前存入 store，到达页面后从 store 取出</span>
+</code></pre></div><h3 id="坑5-小程序分包后组件注册失败"><a href="#坑5-小程序分包后组件注册失败" class="header-anchor">#</a> 坑5：小程序分包后组件注册失败</h3> <div class="language- extra-class"><pre class="language-text"><code>Component is not found in path &quot;components/GoodsCard/GoodsCard&quot; 
+</code></pre></div><p><strong>原因</strong>：小程序分包中使用的组件，必须在分包自己的目录下或主包中。跨分包引用组件是不允许的。</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">// pages.json</span>
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;subPackages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;root&quot;</span><span class="token operator">:</span> <span class="token string">&quot;pages-shop&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;pages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> <span class="token property">&quot;path&quot;</span><span class="token operator">:</span> <span class="token string">&quot;goods-list&quot;</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>// ✅ 正确的目录结构
+pages-shop/
+  components/        ← 分包自己的组件
+    GoodsCard.vue
+  pages/
+    goods-list.vue
+
+components/          ← 主包的公共组件（所有分包都能用）
+  NavBar.vue
+</code></pre></div><h2 id="三、性能优化实战"><a href="#三、性能优化实战" class="header-anchor">#</a> 三、性能优化实战</h2> <h3 id="优化1-长列表渲染"><a href="#优化1-长列表渲染" class="header-anchor">#</a> 优化1：长列表渲染</h3> <p>小程序有 <code>setData</code> 大小限制（约 256KB），大列表直接渲染会导致白屏或卡顿。</p> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token comment">&lt;!-- ❌ 直接渲染大列表 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item in allItems<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.id<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>GoodsCard</span> <span class="token attr-name">:data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- ✅ 使用分页 + 骨架屏 --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>scroll-view</span>
+    <span class="token attr-name">scroll-y</span>
+    <span class="token attr-name">@scrolltolower</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>loadMore<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:</span><span class="token style-attr language-css"><span class="token attr-name"><span class="token attr-name">style</span></span><span class="token punctuation">=&quot;</span><span class="token attr-value"><span class="token punctuation">{</span> <span class="token property">height</span><span class="token punctuation">:</span> scrollHeight + <span class="token string">'px'</span> <span class="token punctuation">}</span></span><span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item in displayList<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item.id<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>GoodsCard</span> <span class="token attr-name">:data</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>item<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>loading<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>loading<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>GoodsCardSkeleton</span> <span class="token attr-name">v-for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>i in 4<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:key</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>i<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+    
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>view</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>noMore<span class="token punctuation">&quot;</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>no-more<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>没有更多了<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>view</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>scroll-view</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> allItems <span class="token operator">=</span> ref<span class="token operator">&lt;</span>GoodsItem<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> page <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> pageSize <span class="token operator">=</span> <span class="token number">20</span>
+<span class="token keyword">const</span> loading <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> noMore <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">loadMore</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>loading<span class="token punctuation">.</span>value <span class="token operator">||</span> noMore<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+  
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword">await</span> api<span class="token punctuation">.</span><span class="token function">getGoods</span><span class="token punctuation">(</span><span class="token punctuation">{</span> page<span class="token operator">:</span> page<span class="token punctuation">.</span>value<span class="token punctuation">,</span> pageSize <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    allItems<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">...</span>res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>list<span class="token punctuation">)</span>
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">.</span>list<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> pageSize<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      noMore<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+    page<span class="token punctuation">.</span>value<span class="token operator">++</span>
+  <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+    loading<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token boolean">false</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="优化2-图片懒加载与压缩"><a href="#优化2-图片懒加载与压缩" class="header-anchor">#</a> 优化2：图片懒加载与压缩</h3> <div class="language-vue extra-class"><pre class="language-vue"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- ✅ 使用 lazy-load + webp --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>image</span>
+    <span class="token attr-name">:src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>getOptimizedUrl(item.cover)<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">lazy-load</span>
+    <span class="token attr-name">mode</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>aspectFill<span class="token punctuation">&quot;</span></span>
+    <span class="token attr-name">:</span><span class="token style-attr language-css"><span class="token attr-name"><span class="token attr-name">style</span></span><span class="token punctuation">=&quot;</span><span class="token attr-value"><span class="token punctuation">{</span> <span class="token property">width</span><span class="token punctuation">:</span> <span class="token string">'100%'</span><span class="token punctuation">,</span> <span class="token property">height</span><span class="token punctuation">:</span> <span class="token string">'200rpx'</span> <span class="token punctuation">}</span></span><span class="token punctuation">&quot;</span></span>
+  <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">setup</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+<span class="token keyword">function</span> <span class="token function">getOptimizedUrl</span><span class="token punctuation">(</span><span class="token parameter">url<span class="token operator">:</span> string</span><span class="token punctuation">)</span><span class="token operator">:</span> string <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>url<span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token string">'/static/placeholder.png'</span>
+  
+  <span class="token comment">// #ifdef MP-WEIXIN</span>
+  <span class="token comment">// 阿里云 OSS 图片处理：缩放 + WebP</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?x-oss-process=image/resize,w_400/format,webp</span><span class="token template-punctuation string">`</span></span>
+  <span class="token comment">// #endif</span>
+  
+  <span class="token comment">// #ifdef H5</span>
+  <span class="token comment">// H5 可以用更激进的压缩</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?x-oss-process=image/resize,w_600/quality,q_80/format,webp</span><span class="token template-punctuation string">`</span></span>
+  <span class="token comment">// #endif</span>
+  
+  <span class="token comment">// #ifdef APP-PLUS</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">?x-oss-process=image/resize,w_400</span><span class="token template-punctuation string">`</span></span>
+  <span class="token comment">// #endif</span>
+<span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><h3 id="优化3-减少-setdata-频率"><a href="#优化3-减少-setdata-频率" class="header-anchor">#</a> 优化3：减少 setData 频率</h3> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// ✅ 使用防抖/节流包装高频更新</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> scrollTop <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> displayScrollTop <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+<span class="token keyword">let</span> timer<span class="token operator">:</span> ReturnType<span class="token operator">&lt;</span><span class="token keyword">typeof</span> setTimeout<span class="token operator">&gt;</span> <span class="token operator">|</span> <span class="token keyword">null</span> <span class="token operator">=</span> <span class="token keyword">null</span>
+
+<span class="token function">watch</span><span class="token punctuation">(</span>scrollTop<span class="token punctuation">,</span> <span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>timer<span class="token punctuation">)</span> <span class="token keyword">return</span>
+  timer <span class="token operator">=</span> <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    displayScrollTop<span class="token punctuation">.</span>value <span class="token operator">=</span> val
+    timer <span class="token operator">=</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span> <span class="token comment">// 约60fps</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="四、调试技巧"><a href="#四、调试技巧" class="header-anchor">#</a> 四、调试技巧</h2> <h3 id="微信开发者工具-vs-code-联合调试"><a href="#微信开发者工具-vs-code-联合调试" class="header-anchor">#</a> 微信开发者工具 + VS Code 联合调试</h3> <div class="language-json extra-class"><pre class="language-json"><code><span class="token comment">// .vscode/launch.json</span>
+<span class="token punctuation">{</span>
+  <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;0.2.0&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;configurations&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;type&quot;</span><span class="token operator">:</span> <span class="token string">&quot;wechat-mini&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;request&quot;</span><span class="token operator">:</span> <span class="token string">&quot;launch&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;微信小程序调试&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;program&quot;</span><span class="token operator">:</span> <span class="token string">&quot;${workspaceFolder}/dist/dev/mp-weixin&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="多端同步调试命令"><a href="#多端同步调试命令" class="header-anchor">#</a> 多端同步调试命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 同时启动多端编译</span>
+<span class="token function">npm</span> run dev:h5 <span class="token operator">&amp;</span>         <span class="token comment"># H5</span>
+<span class="token function">npm</span> run dev:mp-weixin <span class="token operator">&amp;</span>  <span class="token comment"># 微信小程序  </span>
+<span class="token function">npm</span> run dev:app-plus     <span class="token comment"># App</span>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>UniApp 跨端开发的核心原则：</p> <ol><li><strong>抽象平台差异</strong>：封装 <code>platform.ts</code> 适配层，避免条件编译散落各处</li> <li><strong>最小化跨端代码</strong>：80% 的业务逻辑应该是平台无关的</li> <li><strong>性能意识前置</strong>：小程序端的限制决定了你的架构设计</li> <li><strong>善用分包</strong>：合理分包可以显著提升首屏加载速度</li> <li><strong>测试每一端</strong>：永远不要假设一端OK其他端也OK</li></ol></div></div></div> <!----></div> <div class="right"><div class="test animated bounceInRight" data-v-1daa5799><span class="labeltitle" data-v-1daa5799>分类</span> <div class="label-container" data-v-1daa5799><a href="/myblog/category" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  All
+</a><a href="/myblog/category/ai" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  ai
+</a><a href="/myblog/category/css4" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css4
+</a><a href="/myblog/category/css5" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css5
+</a><a href="/myblog/category/css6" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css6
+</a><a href="/myblog/category/css7" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css7
+</a><a href="/myblog/category/css8" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css8
+</a><a href="/myblog/category/css9css9" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css9css9
+</a><a href="/myblog/category/csssdljfslf" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  csssdljfslf
+</a><a href="/myblog/category/css10css10" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css10css10
+</a><a href="/myblog/category/cssdsfjsldfjsldf" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  cssdsfjsldfjsldf
+</a><a href="/myblog/category/flutter" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  flutter
+</a><a href="/myblog/category/cssskdfsljdf" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  cssskdfsljdf
+</a><a href="/myblog/category/javascript" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  javascript
+</a><a href="/myblog/category/python" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  python
+</a><a href="/myblog/category/uniapp" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  uniapp
+</a><a href="/myblog/category/nodejs" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  nodejs
+</a><a href="/myblog/category/vue3" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  vue3
+</a></div></div> <div class="my" data-v-85113e2e><div class="header-info" data-v-85113e2e><div class="avatar" data-v-85113e2e><img src="https://libra321.oss-cn-huhehaote.aliyuncs.com/avatar.jpg" alt class="avatar-img" data-v-85113e2e></div> <span class="name" data-v-85113e2e>Lijinnuo</span> <i class="mail" data-v-85113e2e>794555309@qq.com</i> <div class="statistics" data-v-85113e2e><span class="articles" data-v-85113e2e>
+        33
+        <i class="white" data-v-85113e2e> 文章</i></span> <span class="verticle-line white" data-v-85113e2e>|</span> <span class="link" data-v-85113e2e>
+        17
+        <i class="white" data-v-85113e2e> 分类</i></span></div> <a href="/myblog/contact" class="more" data-v-85113e2e>联系我</a></div></div> <div class="list"><div><ul><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#一、条件编译-不得不写的「脏代码」">一、条件编译：不得不写的「脏代码」</a><ul><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#坑1-条件编译在-template-中的限制">坑1：条件编译在 template 中的限制</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#坑2-平台差异导致样式不一致">坑2：平台差异导致样式不一致</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#更好的做法-封装跨端适配层">更好的做法：封装跨端适配层</a></li></ul></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#二、最容易踩的运行时陷阱">二、最容易踩的运行时陷阱</a><ul><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#坑3-页面生命周期与组件生命周期混用">坑3：页面生命周期与组件生命周期混用</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#坑4-navigate-跳转参数丢失">坑4：navigate 跳转参数丢失</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#坑5-小程序分包后组件注册失败">坑5：小程序分包后组件注册失败</a></li></ul></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#三、性能优化实战">三、性能优化实战</a><ul><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#优化1-长列表渲染">优化1：长列表渲染</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#优化2-图片懒加载与压缩">优化2：图片懒加载与压缩</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#优化3-减少-setdata-频率">优化3：减少 setData 频率</a></li></ul></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#四、调试技巧">四、调试技巧</a><ul><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#微信开发者工具-vs-code-联合调试">微信开发者工具 + VS Code 联合调试</a></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#多端同步调试命令">多端同步调试命令</a></li></ul></li><li><a href="/myblog/2025/10/25/uniapp%E8%B7%A8%E7%AB%AF%E5%BC%80%E5%8F%91%E8%B8%A9%E5%9D%91%E5%AE%9E%E5%BD%95%E4%B8%8E%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/#总结">总结</a></li></ul></div></div></div></div> <div class="footer"><div class="left"><div class="wave-libra"><div class="wavetext"><div class="coast delay"><div class="wave-rel-wrap"><div class="wave delay"></div></div></div> <div class="text text-l">L</div> <div class="text text-i">i</div> <div class="text text-b">b</div> <div class="text text-r">r</div> <div class="text text-a">a</div></div></div></div> <div class="right">
+    Copyright © 2019-2020 Libra | 版权所有
+  </div></div></div><div class="global-ui"><!----></div></div>
+    <script src="/myblog/assets/js/app.0a876373.js" defer></script><script src="/myblog/assets/js/5.853d4883.js" defer></script><script src="/myblog/assets/js/47.1d3b9909.js" defer></script><script src="/myblog/assets/js/1.cdc4b264.js" defer></script>
+  </body>
+</html>

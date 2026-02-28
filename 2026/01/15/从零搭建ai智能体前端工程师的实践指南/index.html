@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>从零搭建AI智能体：前端工程师的实践指南 | Libra</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="icon" href="/myblog/favicon.ico">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/myblog/assets/css/0.styles.8002f6fa.css" as="style"><link rel="preload" href="/myblog/assets/js/app.0a876373.js" as="script"><link rel="preload" href="/myblog/assets/js/5.853d4883.js" as="script"><link rel="preload" href="/myblog/assets/js/16.e4a987dc.js" as="script"><link rel="preload" href="/myblog/assets/js/1.cdc4b264.js" as="script"><link rel="prefetch" href="/myblog/assets/js/10.23267578.js"><link rel="prefetch" href="/myblog/assets/js/11.be992460.js"><link rel="prefetch" href="/myblog/assets/js/12.4570de1c.js"><link rel="prefetch" href="/myblog/assets/js/13.bd8d8dd2.js"><link rel="prefetch" href="/myblog/assets/js/14.1f804322.js"><link rel="prefetch" href="/myblog/assets/js/15.af9e6b2c.js"><link rel="prefetch" href="/myblog/assets/js/17.f6effde3.js"><link rel="prefetch" href="/myblog/assets/js/18.4c9cfb8e.js"><link rel="prefetch" href="/myblog/assets/js/19.37c484fe.js"><link rel="prefetch" href="/myblog/assets/js/20.a99653e3.js"><link rel="prefetch" href="/myblog/assets/js/21.1af7cc5d.js"><link rel="prefetch" href="/myblog/assets/js/22.1229b890.js"><link rel="prefetch" href="/myblog/assets/js/23.82a27837.js"><link rel="prefetch" href="/myblog/assets/js/24.cf005177.js"><link rel="prefetch" href="/myblog/assets/js/25.3b815601.js"><link rel="prefetch" href="/myblog/assets/js/26.330372a6.js"><link rel="prefetch" href="/myblog/assets/js/27.165394fc.js"><link rel="prefetch" href="/myblog/assets/js/28.fb4ee107.js"><link rel="prefetch" href="/myblog/assets/js/29.94bb2658.js"><link rel="prefetch" href="/myblog/assets/js/30.94fd0e41.js"><link rel="prefetch" href="/myblog/assets/js/31.8a3ae5b7.js"><link rel="prefetch" href="/myblog/assets/js/32.3c348ce2.js"><link rel="prefetch" href="/myblog/assets/js/33.7cab764e.js"><link rel="prefetch" href="/myblog/assets/js/34.3eb790d7.js"><link rel="prefetch" href="/myblog/assets/js/35.8d1acd41.js"><link rel="prefetch" href="/myblog/assets/js/36.2f174442.js"><link rel="prefetch" href="/myblog/assets/js/37.73b03b13.js"><link rel="prefetch" href="/myblog/assets/js/38.2f8a2d2e.js"><link rel="prefetch" href="/myblog/assets/js/39.a7a47a26.js"><link rel="prefetch" href="/myblog/assets/js/4.544b33f4.js"><link rel="prefetch" href="/myblog/assets/js/40.2413154b.js"><link rel="prefetch" href="/myblog/assets/js/41.49cf6e71.js"><link rel="prefetch" href="/myblog/assets/js/42.50c0dac3.js"><link rel="prefetch" href="/myblog/assets/js/43.23142174.js"><link rel="prefetch" href="/myblog/assets/js/44.0f5a8424.js"><link rel="prefetch" href="/myblog/assets/js/45.47e21b95.js"><link rel="prefetch" href="/myblog/assets/js/46.6ba44e8d.js"><link rel="prefetch" href="/myblog/assets/js/47.1d3b9909.js"><link rel="prefetch" href="/myblog/assets/js/48.7403b689.js"><link rel="prefetch" href="/myblog/assets/js/6.e5482409.js"><link rel="prefetch" href="/myblog/assets/js/7.e853b8f4.js"><link rel="prefetch" href="/myblog/assets/js/8.16fabdc6.js"><link rel="prefetch" href="/myblog/assets/js/9.b305dea1.js"><link rel="prefetch" href="/myblog/assets/js/vuejs-paginate.22753671.js">
+    <link rel="stylesheet" href="/myblog/assets/css/0.styles.8002f6fa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="article"><nav class="topbar"><span class="logo"><span class="logo-text">L</span></span> <ul class="menu"><li class="menu-item"><a href="/myblog/" class="link router-link-active">主页</a></li> <li class="menu-item"><a href="/myblog/blog" class="link">博客</a></li> <li class="menu-item"><a href="/myblog/tag" class="link">标签</a></li> <li class="menu-item"><a href="/myblog/category" class="link">分类</a></li> <li class="menu-item"><a href="/myblog/timeline" class="link">时间线</a></li> <li class="menu-item"><a href="/myblog/contact" class="link">联系我</a></li></ul> <div class="search"><i class="iconfont iconsearch"></i> <div class="search-box" data-v-085dd956><input aria-label="Search" placeholder="请输入你想要搜索的内容..." autocomplete="off" spellcheck="false" value="" data-v-085dd956> <!----></div></div> <span class="mobile-nav"><i class="iconfont iconnav"></i></span> <nav class="mobile-nav-item" style="display:none;"><div class="header-button"><i class="iconfont iconback"></i></div> <div class="header-info"><div class="avatar"><img src="https://libra321.oss-cn-huhehaote.aliyuncs.com/avatar.jpg" alt="" class="avatar-img"></div> <span class="name">Lijinnuo</span> <i class="mail">794555309@qq.com</i> <div class="statistics"><span class="articles">
+            33
+            <i class="white"> 文章</i></span> <span class="verticle-line white">|</span> <span class="link">
+            17
+            <i class="white"> 分类</i></span></div></div> <div class="line"></div> <ul class="nav-menu"><li class="nav-menu-item"><a href="/myblog/" class="router-link-active"><i class="iconfont iconhome"></i> <i class="white">主页</i></a></li> <li class="nav-menu-item"><a href="/myblog/blog"><i class="iconfont iconblog"></i> <i class="white">博客</i></a></li> <li class="nav-menu-item"><a href="/myblog/tag"><i class="iconfont iconlabel"></i> <i class="white">标签</i></a></li> <li class="nav-menu-item"><a href="/myblog/category"><i class="iconfont iconfenlei-"></i> <i class="white">分类</i></a></li> <li class="nav-menu-item"><a href="/myblog/timeline"><i class="iconfont icontimeline"></i> <i class="white">时间线</i></a></li> <li class="nav-menu-item"><a href="/myblog/contact"><i class="iconfont iconother"></i> <i class="white">联系我</i></a></li></ul></nav></nav> <div id="particles-js" color="#fff" particleOpacity="0.7" linesColor="#fff" particlesNumber="60" shapeType="circle" particleSize="4" linesWidth="1" lineLinked="true" lineOpacity="0.4" linesDistance="150" moveSpeed="6" hoverEffect="true" hoverMode="grab" clickEffect="true" clickMode="push" class="bg"></div> <div class="article-content"><div class="left"><span class="title animated rollIn">从零搭建AI智能体：前端工程师的实践指南</span> <ul class="label animated zoomInUp"><li class="date"><i class="iconfont iconshizhong"></i>
+          2026-01-15
+        </li> <li class="update"><i class="iconfont iconUpdate"></i>
+          2026-01-15
+        </li> <li class="labels"><i class="iconfont iconlabel"></i>
+          ai
+        </li></ul> <div class="image"><img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800" alt width="100%"></div> <div class="detail"><div><div class="content__default"><h1 id="从零搭建ai智能体-前端工程师的实践指南"><a href="#从零搭建ai智能体-前端工程师的实践指南" class="header-anchor">#</a> 从零搭建AI智能体：前端工程师的实践指南</h1> <p>AI Agent（智能体）是2025年最火的技术方向之一。作为前端工程师，我们天然具备构建交互界面的优势，再结合 Node.js 的全栈能力，完全可以独立搭建一个完整的AI智能体应用。</p> <h2 id="什么是ai智能体"><a href="#什么是ai智能体" class="header-anchor">#</a> 什么是AI智能体？</h2> <p>简单来说，AI 智能体 = <strong>大模型 + 记忆 + 工具调用 + 规划能力</strong>。</p> <p>与普通的聊天机器人不同，智能体可以：</p> <ul><li><strong>自主规划</strong>：将复杂任务拆分为多个子步骤</li> <li><strong>使用工具</strong>：调用API、查询数据库、执行代码</li> <li><strong>记忆上下文</strong>：记住对话历史和中间结果</li> <li><strong>反思迭代</strong>：检查结果，必要时回溯和修正</li></ul> <div class="language- extra-class"><pre class="language-text"><code>用户请求 → 智能体规划 → 选择工具 → 执行操作 → 检查结果 → 返回/继续
+              ↑                                        |
+              └────────── 反思 &amp; 重新规划 ←─────────────┘
+</code></pre></div><h2 id="技术栈选择"><a href="#技术栈选择" class="header-anchor">#</a> 技术栈选择</h2> <p>作为前端工程师，我推荐以下技术栈：</p> <table><thead><tr><th>层级</th> <th>技术选择</th> <th>说明</th></tr></thead> <tbody><tr><td>前端界面</td> <td>Vue3 + TypeScript</td> <td>对话式交互界面</td></tr> <tr><td>智能体框架</td> <td>LangChain.js</td> <td>Node.js 原生支持的 Agent 框架</td></tr> <tr><td>大模型</td> <td>OpenAI / 通义千问</td> <td>提供推理和工具调用能力</td></tr> <tr><td>向量数据库</td> <td>Chroma / Milvus</td> <td>存储知识库向量</td></tr> <tr><td>后端服务</td> <td>Node.js + Express</td> <td>中间层API服务</td></tr></tbody></table> <h2 id="核心实现-构建一个代码审查智能体"><a href="#核心实现-构建一个代码审查智能体" class="header-anchor">#</a> 核心实现：构建一个代码审查智能体</h2> <p>我们来构建一个<strong>前端代码审查智能体</strong>，它能够分析代码质量、检测常见问题，并给出改进建议。</p> <h3 id="step-1-初始化项目和安装依赖"><a href="#step-1-初始化项目和安装依赖" class="header-anchor">#</a> Step 1：初始化项目和安装依赖</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> code-review-agent <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> code-review-agent
+<span class="token function">npm</span> init -y
+<span class="token function">npm</span> <span class="token function">install</span> langchain @langchain/openai @langchain/core zod express
+<span class="token function">npm</span> <span class="token function">install</span> -D typescript @types/node @types/express tsx
+</code></pre></div><h3 id="step-2-定义工具-tools"><a href="#step-2-定义工具-tools" class="header-anchor">#</a> Step 2：定义工具（Tools）</h3> <p>工具是智能体的「手」，让它能真正执行操作：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// src/tools/codeAnalyzer.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> tool <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@langchain/core/tools'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> z <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'zod'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> analyzeCodeComplexity <span class="token operator">=</span> <span class="token function">tool</span><span class="token punctuation">(</span>
+  <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> code<span class="token punctuation">,</span> language <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> issues<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    
+    <span class="token comment">// 检测函数长度</span>
+    <span class="token keyword">const</span> functionMatches <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>
+      <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">function\s+\w+|const\s+\w+\s*=\s*(\([^)]*\)|[^=])\s*=&gt;</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">const</span> functionCount <span class="token operator">=</span> functionMatches<span class="token operator">?.</span>length <span class="token operator">??</span> <span class="token number">0</span>
+    
+    <span class="token comment">// 检测嵌套深度</span>
+    <span class="token keyword">let</span> maxDepth <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> currentDepth <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> char <span class="token keyword">of</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>char <span class="token operator">===</span> <span class="token string">'{'</span><span class="token punctuation">)</span> currentDepth<span class="token operator">++</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>char <span class="token operator">===</span> <span class="token string">'}'</span><span class="token punctuation">)</span> currentDepth<span class="token operator">--</span>
+      maxDepth <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxDepth<span class="token punctuation">,</span> currentDepth<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>maxDepth <span class="token operator">&gt;</span> <span class="token number">4</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      issues<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">⚠️ 嵌套深度过高 (</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>maxDepth<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 层)，建议拆分逻辑或使用 early return</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 检测魔法数字</span>
+    <span class="token keyword">const</span> magicNumbers <span class="token operator">=</span> code<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[^0-9a-zA-Z_](\d{2,})[^0-9a-zA-Z_]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>magicNumbers <span class="token operator">&amp;&amp;</span> magicNumbers<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      issues<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">⚠️ 发现 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>magicNumbers<span class="token punctuation">.</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 个魔法数字，建议提取为常量</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 检测console.log</span>
+    <span class="token keyword">const</span> consoleLogs <span class="token operator">=</span> <span class="token punctuation">(</span>code<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">console\.(log|warn|error)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>consoleLogs <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      issues<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">⚠️ 发现 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>consoleLogs<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 处 console 调用，生产代码中应移除</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">// 检测 any 类型</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>language <span class="token operator">===</span> <span class="token string">'typescript'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> anyCount <span class="token operator">=</span> <span class="token punctuation">(</span>code<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">:\s*any</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>anyCount <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        issues<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">⚠️ 发现 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>anyCount<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 处 any 类型，建议使用精确的类型定义</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">return</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      functionCount<span class="token punctuation">,</span>
+      maxNestingDepth<span class="token operator">:</span> maxDepth<span class="token punctuation">,</span>
+      issues<span class="token punctuation">,</span>
+      score<span class="token operator">:</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span> <span class="token operator">-</span> issues<span class="token punctuation">.</span>length <span class="token operator">*</span> <span class="token number">15</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'analyze_code_complexity'</span><span class="token punctuation">,</span>
+    description<span class="token operator">:</span> <span class="token string">'分析代码复杂度，检测潜在问题'</span><span class="token punctuation">,</span>
+    schema<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      code<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'要分析的代码'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      language<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token keyword">enum</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'javascript'</span><span class="token punctuation">,</span> <span class="token string">'typescript'</span><span class="token punctuation">,</span> <span class="token string">'vue'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'编程语言'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">const</span> suggestRefactoring <span class="token operator">=</span> <span class="token function">tool</span><span class="token punctuation">(</span>
+  <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> code<span class="token punctuation">,</span> issue <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> suggestions<span class="token operator">:</span> Record<span class="token operator">&lt;</span><span class="token builtin">string</span><span class="token punctuation">,</span> <span class="token builtin">string</span><span class="token operator">&gt;</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token string">'nesting'</span><span class="token operator">:</span> <span class="token string">'使用 early return 模式减少嵌套：\n'</span>
+        <span class="token operator">+</span> <span class="token string">'if (!condition) return\n'</span>
+        <span class="token operator">+</span> <span class="token string">'// 主逻辑...'</span><span class="token punctuation">,</span>
+      <span class="token string">'magic_number'</span><span class="token operator">:</span> <span class="token string">'提取常量到文件顶部：\n'</span>
+        <span class="token operator">+</span> <span class="token string">'const MAX_RETRY_COUNT = 3\n'</span>
+        <span class="token operator">+</span> <span class="token string">'const PAGE_SIZE = 20'</span><span class="token punctuation">,</span>
+      <span class="token string">'any_type'</span><span class="token operator">:</span> <span class="token string">'使用泛型或联合类型替代 any：\n'</span>
+        <span class="token operator">+</span> <span class="token string">'function parse&lt;T&gt;(input: string): T\n'</span>
+        <span class="token operator">+</span> <span class="token string">'type Result = Success | Error'</span><span class="token punctuation">,</span>
+      <span class="token string">'long_function'</span><span class="token operator">:</span> <span class="token string">'使用 Composition API 拆分逻辑：\n'</span>
+        <span class="token operator">+</span> <span class="token string">'将相关逻辑抽取到 composable 函数中'</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> suggestions<span class="token punctuation">[</span>issue<span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">'建议进行代码拆分和模块化重构'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token string">'suggest_refactoring'</span><span class="token punctuation">,</span>
+    description<span class="token operator">:</span> <span class="token string">'根据问题类型给出重构建议'</span><span class="token punctuation">,</span>
+    schema<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">object</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      code<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'需要重构的代码片段'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      issue<span class="token operator">:</span> z<span class="token punctuation">.</span><span class="token keyword">enum</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'nesting'</span><span class="token punctuation">,</span> <span class="token string">'magic_number'</span><span class="token punctuation">,</span> <span class="token string">'any_type'</span><span class="token punctuation">,</span> <span class="token string">'long_function'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'问题类型'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre></div><h3 id="step-3-组装智能体"><a href="#step-3-组装智能体" class="header-anchor">#</a> Step 3：组装智能体</h3> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// src/agent.ts</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> ChatOpenAI <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@langchain/openai'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> createReactAgent <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@langchain/langgraph/prebuilt'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> HumanMessage <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@langchain/core/messages'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> analyzeCodeComplexity<span class="token punctuation">,</span> suggestRefactoring <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./tools/codeAnalyzer'</span>
+
+<span class="token keyword">const</span> llm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ChatOpenAI</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modelName<span class="token operator">:</span> <span class="token string">'gpt-4o'</span><span class="token punctuation">,</span>
+  temperature<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> tools <span class="token operator">=</span> <span class="token punctuation">[</span>analyzeCodeComplexity<span class="token punctuation">,</span> suggestRefactoring<span class="token punctuation">]</span>
+
+<span class="token keyword">const</span> agent <span class="token operator">=</span> <span class="token function">createReactAgent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  llm<span class="token punctuation">,</span>
+  tools<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">reviewCode</span><span class="token punctuation">(</span>code<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> language<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> result <span class="token operator">=</span> <span class="token keyword">await</span> agent<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    messages<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token keyword">new</span> <span class="token class-name">HumanMessage</span><span class="token punctuation">(</span>
+        <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">你是一位资深前端代码审查专家。请对以下 </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>language<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> 代码进行全面审查：
+        
+\`\`\`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>language<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>code<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
+\`\`\`
+
+请使用工具分析代码复杂度，找出问题后给出重构建议。
+最后输出一份结构化的审查报告，包括：评分、问题列表、改进建议。</span><span class="token template-punctuation string">`</span></span>
+      <span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  
+  <span class="token keyword">return</span> result<span class="token punctuation">.</span>messages<span class="token punctuation">[</span>result<span class="token punctuation">.</span>messages<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>content
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="step-4-构建api接口"><a href="#step-4-构建api接口" class="header-anchor">#</a> Step 4：构建API接口</h3> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// src/server.ts</span>
+<span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> reviewCode <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./agent'</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>express<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/api/review'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> code<span class="token punctuation">,</span> language <span class="token operator">=</span> <span class="token string">'typescript'</span> <span class="token punctuation">}</span> <span class="token operator">=</span> req<span class="token punctuation">.</span>body
+    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">400</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> error<span class="token operator">:</span> <span class="token string">'请提供代码'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">const</span> review <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">reviewCode</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> language<span class="token punctuation">)</span>
+    res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> success<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> review <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">'Review failed:'</span><span class="token punctuation">,</span> error<span class="token punctuation">)</span>
+    res<span class="token punctuation">.</span><span class="token function">status</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">{</span> error<span class="token operator">:</span> <span class="token string">'审查失败'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Code Review Agent running on port 3000'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="进阶-实现多agent协作"><a href="#进阶-实现多agent协作" class="header-anchor">#</a> 进阶：实现多Agent协作</h2> <p>在复杂场景下，单个Agent往往不够，我们可以实现多Agent协作模式：</p> <div class="language-typescript extra-class"><pre class="language-typescript"><code><span class="token comment">// 规划Agent：负责拆分任务</span>
+<span class="token keyword">const</span> plannerAgent <span class="token operator">=</span> <span class="token function">createReactAgent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  llm<span class="token punctuation">,</span>
+  tools<span class="token operator">:</span> <span class="token punctuation">[</span>taskSplitter<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  systemMessage<span class="token operator">:</span> <span class="token string">'你是任务规划专家，负责将复杂需求拆分为可执行的子任务'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 编码Agent：负责生成代码</span>
+<span class="token keyword">const</span> coderAgent <span class="token operator">=</span> <span class="token function">createReactAgent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  llm<span class="token punctuation">,</span>
+  tools<span class="token operator">:</span> <span class="token punctuation">[</span>codeGenerator<span class="token punctuation">,</span> testGenerator<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  systemMessage<span class="token operator">:</span> <span class="token string">'你是前端开发专家，根据需求生成高质量的 TypeScript + Vue3 代码'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 审查Agent：负责代码审查</span>
+<span class="token keyword">const</span> reviewerAgent <span class="token operator">=</span> <span class="token function">createReactAgent</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  llm<span class="token punctuation">,</span>
+  tools<span class="token operator">:</span> <span class="token punctuation">[</span>analyzeCodeComplexity<span class="token punctuation">,</span> suggestRefactoring<span class="token punctuation">]</span><span class="token punctuation">,</span>
+  systemMessage<span class="token operator">:</span> <span class="token string">'你是代码审查专家，严格检查代码质量和最佳实践'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">// 编排流程</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">developFeature</span><span class="token punctuation">(</span>requirement<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 1. 规划</span>
+  <span class="token keyword">const</span> plan <span class="token operator">=</span> <span class="token keyword">await</span> plannerAgent<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>requirement<span class="token punctuation">)</span>
+  
+  <span class="token comment">// 2. 编码（可并行执行多个子任务）</span>
+  <span class="token keyword">const</span> codeResults <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>
+    plan<span class="token punctuation">.</span>tasks<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>task <span class="token operator">=&gt;</span> coderAgent<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+  
+  <span class="token comment">// 3. 审查</span>
+  <span class="token keyword">const</span> reviews <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token builtin">Promise</span><span class="token punctuation">.</span><span class="token function">all</span><span class="token punctuation">(</span>
+    codeResults<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>code <span class="token operator">=&gt;</span> reviewerAgent<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">)</span>
+  
+  <span class="token comment">// 4. 如有问题，返回编码Agent修改</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="关键经验总结"><a href="#关键经验总结" class="header-anchor">#</a> 关键经验总结</h2> <p>经过多个 Agent 项目的实践，我总结了几条经验：</p> <ol><li><strong>Prompt是灵魂</strong>：好的系统提示词比换更强的模型更有效，花时间在 prompt engineering 上</li> <li><strong>工具设计要精简</strong>：每个工具的功能要单一明确，参数用 Zod 严格校验</li> <li><strong>加入兜底机制</strong>：大模型会犯错，必须有超时、重试和降级处理</li> <li><strong>流式输出体验好</strong>：使用 SSE 实现打字机效果，用户等待感大大降低</li> <li><strong>成本控制很重要</strong>：合理设置 <code>max_tokens</code>，用缓存避免重复调用</li></ol> <h2 id="前端工程师做agent的优势"><a href="#前端工程师做agent的优势" class="header-anchor">#</a> 前端工程师做Agent的优势</h2> <ul><li>🖥️ 擅长构建交互界面，Agent 的价值需要好的 UI 来展现</li> <li>🔧 Node.js 全栈能力，可以快速搭建原型</li> <li>🎨 理解用户体验，知道如何设计人机交互流程</li> <li>📦 前端工程化经验可以直接迁移到 Agent 工程化中</li></ul></div></div></div> <!----></div> <div class="right"><div class="test animated bounceInRight" data-v-1daa5799><span class="labeltitle" data-v-1daa5799>分类</span> <div class="label-container" data-v-1daa5799><a href="/myblog/category" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  All
+</a><a href="/myblog/category/ai" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  ai
+</a><a href="/myblog/category/css4" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css4
+</a><a href="/myblog/category/css5" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css5
+</a><a href="/myblog/category/css6" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css6
+</a><a href="/myblog/category/css7" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css7
+</a><a href="/myblog/category/css8" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css8
+</a><a href="/myblog/category/css9css9" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css9css9
+</a><a href="/myblog/category/csssdljfslf" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  csssdljfslf
+</a><a href="/myblog/category/css10css10" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  css10css10
+</a><a href="/myblog/category/cssdsfjsldfjsldf" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  cssdsfjsldfjsldf
+</a><a href="/myblog/category/flutter" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  flutter
+</a><a href="/myblog/category/cssskdfsljdf" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  cssskdfsljdf
+</a><a href="/myblog/category/javascript" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  javascript
+</a><a href="/myblog/category/python" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  python
+</a><a href="/myblog/category/uniapp" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  uniapp
+</a><a href="/myblog/category/nodejs" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  nodejs
+</a><a href="/myblog/category/vue3" class="container" data-v-3fd29ed0 data-v-1daa5799>
+  vue3
+</a></div></div> <div class="my" data-v-85113e2e><div class="header-info" data-v-85113e2e><div class="avatar" data-v-85113e2e><img src="https://libra321.oss-cn-huhehaote.aliyuncs.com/avatar.jpg" alt class="avatar-img" data-v-85113e2e></div> <span class="name" data-v-85113e2e>Lijinnuo</span> <i class="mail" data-v-85113e2e>794555309@qq.com</i> <div class="statistics" data-v-85113e2e><span class="articles" data-v-85113e2e>
+        33
+        <i class="white" data-v-85113e2e> 文章</i></span> <span class="verticle-line white" data-v-85113e2e>|</span> <span class="link" data-v-85113e2e>
+        17
+        <i class="white" data-v-85113e2e> 分类</i></span></div> <a href="/myblog/contact" class="more" data-v-85113e2e>联系我</a></div></div> <div class="list"><div><ul><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#什么是ai智能体">什么是AI智能体？</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#技术栈选择">技术栈选择</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#核心实现-构建一个代码审查智能体">核心实现：构建一个代码审查智能体</a><ul><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#step-1-初始化项目和安装依赖">Step 1：初始化项目和安装依赖</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#step-2-定义工具-tools">Step 2：定义工具（Tools）</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#step-3-组装智能体">Step 3：组装智能体</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#step-4-构建api接口">Step 4：构建API接口</a></li></ul></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#进阶-实现多agent协作">进阶：实现多Agent协作</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#关键经验总结">关键经验总结</a></li><li><a href="/myblog/2026/01/15/%E4%BB%8E%E9%9B%B6%E6%90%AD%E5%BB%BAai%E6%99%BA%E8%83%BD%E4%BD%93%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E5%AE%9E%E8%B7%B5%E6%8C%87%E5%8D%97/#前端工程师做agent的优势">前端工程师做Agent的优势</a></li></ul></div></div></div></div> <div class="footer"><div class="left"><div class="wave-libra"><div class="wavetext"><div class="coast delay"><div class="wave-rel-wrap"><div class="wave delay"></div></div></div> <div class="text text-l">L</div> <div class="text text-i">i</div> <div class="text text-b">b</div> <div class="text text-r">r</div> <div class="text text-a">a</div></div></div></div> <div class="right">
+    Copyright © 2019-2020 Libra | 版权所有
+  </div></div></div><div class="global-ui"><!----></div></div>
+    <script src="/myblog/assets/js/app.0a876373.js" defer></script><script src="/myblog/assets/js/5.853d4883.js" defer></script><script src="/myblog/assets/js/16.e4a987dc.js" defer></script><script src="/myblog/assets/js/1.cdc4b264.js" defer></script>
+  </body>
+</html>
